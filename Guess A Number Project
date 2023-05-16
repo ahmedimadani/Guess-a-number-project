@@ -1,0 +1,71 @@
+**
+ * Guess a number project
+ *
+ * @author Ahmed Madani
+ * @version 2/20/2023
+ */
+import java.util.Scanner;
+import java.util.Random;
+
+public class GuessANumber {
+
+    public static void main(String[] args) {
+         Scanner input = new Scanner(System.in);
+      System.out.print("Enter a random seed: ");
+      int Seed = input.nextInt();
+      Random rnd = new Random(Seed);
+      int Num = rnd.nextInt(200) + 1; 
+      int GuessNum = 0;
+      int guess;
+      //Established my scanner and random generator and established int variables for my upcoming statements 
+      
+       System.out.print("Enter a guess between 1 and 200: ");
+      
+      do {
+            guess = input.nextInt();
+            GuessNum++;
+// Setting up a do while statement to keep executing the different statements
+           if ( guess < 1) { 
+           System.out.println("Your guess is out of range.  Pick a number between 1 and 200.");
+           
+           } else if( guess > 200){
+            System.out.println("Your guess is out of range.  Pick a number between 1 and 200.");
+            
+           }
+           if (guess < Num) {
+                System.out.println("Your guess was too low - try again.");
+                System.out.println();
+                System.out.print("Enter a guess between 1 and 200: ");
+            } else if (guess > Num) {
+                System.out.println("Your guess was too high - try again.");
+                System.out.println();
+                System.out.print("Enter a guess between 1 and 200: ");
+            }
+        } while (guess != Num);
+//utilized if statements to be able to distinguish what statements go with what number range
+        System.out.println("Congratulations!  Your guess was correct!");
+        System.out.println();
+        System.out.printf("I had chosen %d as the target number.", Num);
+        System.out.println();
+        System.out.printf("You guessed it in %d tries.", GuessNum);
+        System.out.println();
+        //Using system out print to give out some of the finalized statements and using printf for specific calculations
+        if (GuessNum == 1) {
+            System.out.println("That was impossible!");
+        } else if (GuessNum > 1 && GuessNum < 4) {
+            System.out.println("You're pretty lucky!");
+        } else if  (GuessNum > 3 && GuessNum < 8){
+           System.out.println("Not bad, not bad...");
+        } else if (GuessNum == 8){
+           System.out.println("That was not very impressive.");
+        } else if (GuessNum > 8 && GuessNum < 11){
+           System.out.println("Are you having any fun at all?");
+        }
+    //Using if statements to correlate ther right number with the right final message
+        else 
+        { 
+            System.out.println("Maybe you should play something else.");
+        //Final line if it goes through all tests.
+       } 
+    }
+}
